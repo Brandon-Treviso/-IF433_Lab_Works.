@@ -3,10 +3,11 @@ package ` oop_00000114579_BrandonTreviso`.week01
 fun main() {
     val gameTitle = "Black Myth Wukong"
     val price = 750000
+    val userNote: String? = null
 
     val finalPrice = calculateDiscount(price)
 
-    printReceipt (title = gameTitle, finalPrice = finalPrice)
+    printReceipt (title = gameTitle, finalPrice = finalPrice, note = userNote)
 }
 
 fun calculateDiscount(price: Int) =
@@ -15,7 +16,8 @@ fun calculateDiscount(price: Int) =
     else
         price - (price * 10 / 100)
 
-fun printReceipt (title: String, finalPrice: Int) {
+fun printReceipt (title: String, finalPrice: Int, note: String?) {
     println("Judul Game : $title")
     println("Harga Akhir: Rp. $finalPrice")
+    println("Catatan : ${note ?: "Tidak ada catatan"}")
 }
