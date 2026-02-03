@@ -4,5 +4,11 @@ fun main() {
     val gameTitle = "Black Myth Wukong"
     val price = 750000
 
-    println("Saya ingin beli sebuah game $gameTitle dengan harga $price")
+    val finalPrice = calculateDiscount(price)
 }
+
+fun calculateDiscount(price: Int) =
+    if (price > 500000)
+        price - (price * 20 / 100)
+    else
+        price - (price * 10 / 100)
