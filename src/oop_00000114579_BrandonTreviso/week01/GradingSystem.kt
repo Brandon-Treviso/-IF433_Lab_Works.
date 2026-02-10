@@ -1,4 +1,4 @@
-package ` oop_00000114579_BrandonTreviso`.week01
+package oop_00000114579_BrandonTreviso.week01
 
 fun calculateStatus(score: Int) = if (score > 75) "Lulus" else "Tidak Lulus"
 
