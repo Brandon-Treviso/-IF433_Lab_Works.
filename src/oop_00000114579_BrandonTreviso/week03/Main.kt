@@ -14,4 +14,8 @@ fun main() {
 
     // 3. Test Computed Property
     println("Pajak yang harus dibayar: ${e.tax}")
+
+
+    println("--- MENU WEAPON ---")
+
 }
