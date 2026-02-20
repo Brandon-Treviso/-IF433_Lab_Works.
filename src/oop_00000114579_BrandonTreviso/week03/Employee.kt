@@ -19,9 +19,5 @@ fun increasePerformance(){
     println("Kinerja $name meningkat! Rating: $performanceRating")
 }
 
-fun printStatus() {
-    println("Karyawan: $name, Rating: $performanceRating")
-}
-
 }
 
