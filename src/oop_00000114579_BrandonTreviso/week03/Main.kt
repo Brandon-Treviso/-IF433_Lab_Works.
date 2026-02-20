@@ -15,7 +15,14 @@ fun main() {
     // 3. Test Computed Property
     println("Pajak yang harus dibayar: ${e.tax}")
 
+    println("\n--- WEAPON TESTING ---")
 
-    println("--- MENU WEAPON ---")
+    val sword = Weapon("Sovereign")
 
+    sword.damage = -50
+    sword.damage = 9999
+
+    println("Weapon: ${sword.name}")
+    println("Damage: ${sword.damage}")
+    println("Tier: ${sword.tier}")
 }
