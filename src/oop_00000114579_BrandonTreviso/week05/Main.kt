@@ -19,6 +19,7 @@ fun main() {
                 println("=> Terdeteksi sebagai Dosen (NIDN: ${pegawai.nidn})")
                 pegawai.mengajar() // Smart cast ! Tidak perlu manual casting (as)
             }
+
             is Admin -> {
                 println("=> Terdeteksi sebagai Admin")
                 pegawai.doAdminWork()
@@ -32,4 +33,18 @@ fun main() {
     println("Luas Persegi: ${mathHelper.hitungLuas(5)}")
     println("Luas Persegi Panjang: ${mathHelper.hitungLuas(4, 6)}")
     println("Luas Lingkaran: ${mathHelper.hitungLuas(7.0)}")
+
+    println("--------------------------------------")
+    val eWallet = EWallet("Brandon", 50000.0)
+    val creditCard = CreditCard("Brandon", 100000.0)
+
+    val paymentMethods: List<PaymentMethod> = listOf(eWallet, creditCard)
+
+    for (payment in paymentMethods) {
+
+        println("Metode pembayaran: ${payment.accountName}")
+        payment.processPayment(75000.0)
+
+        println()
+    }
 }
