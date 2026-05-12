@@ -28,7 +28,7 @@ fun main() {
 
     var currentKibbleStock = 50
 
-    println("=== Jadwal Makan Pagi ===")
+    println("\n=== Jadwal Makan Pagi ===")
 
     try {
 
@@ -52,5 +52,17 @@ fun main() {
     } finally {
         println("Siklus pengecekan dispenser pagi selesai.")
     }
-}
 
+    println()
+    println("\n=== Jadwal Makan Sore ===")
+
+    runCatching {
+
+        dispenseKibble(
+            requestedGram = 30,
+            availableGram = 1000,
+            isJammed = false
+        )
+
+    }
+}
