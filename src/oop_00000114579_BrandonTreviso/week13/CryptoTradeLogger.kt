@@ -14,13 +14,21 @@ fun TradeRecord.toCsv(): String {
 
 fun fromCsvTrade(line: String): TradeRecord? {
 
-    val data = line.split(",")
+    return try {
 
-    return TradeRecord(
-        data[0].toInt(),
-        data[1],
-        data[2],
-        data[3].toDouble(),
-        data[4].toDouble()
-    )
+        val data = line.split(",")
+
+        TradeRecord(
+            data[0].toInt(),
+            data[1],
+            data[2],
+            data[3].toDouble(),
+            data[4].toDouble()
+        )
+
+    } catch (e: Exception) {
+
+        println("(Log) Data korup diabaikan: $line")
+        null
+    }
 }
