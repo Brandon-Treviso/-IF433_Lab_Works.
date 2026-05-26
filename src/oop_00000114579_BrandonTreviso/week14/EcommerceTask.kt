@@ -32,22 +32,43 @@ class EmailNotifier : NotificationService {
     }
 }
 
+interface PricingStrategy {
+    fun calculate(price: Double): Double
+}
+
+class VipPricing : PricingStrategy {
+
+    override fun calculate(price: Double): Double {
+        return price * 0.8
+    }
+}
+
+class RegularPricing : PricingStrategy {
+
+    override fun calculate(price: Double): Double {
+        return price * 0.9
+    }
+}
+
+class GuestPricing : PricingStrategy {
+
+    override fun calculate(price: Double): Double {
+        return price
+    }
+}
+
 class SafeOrderProcessor(
     private val repository: OrderRepository,
     private val notifier: NotificationService
 ) {
 
     fun processOrder(
-        customerType: String,
+        strategy: PricingStrategy,
         customerEmail: String,
         price: Double
     ) {
 
-        val finalPrice = when (customerType) {
-            "VIP" -> price * 0.8
-            "REGULAR" -> price * 0.9
-            else -> price
-        }
+        val finalPrice = strategy.calculate(price)
 
         val orderData =
             "Email: $customerEmail, Total: $finalPrice"
@@ -68,8 +89,20 @@ fun main() {
     )
 
     processor.processOrder(
-        "VIP",
+        VipPricing(),
         "brandon@gmail.com",
         100000.0
+    )
+
+    processor.processOrder(
+        RegularPricing(),
+        "user@gmail.com",
+        50000.0
+    )
+
+    processor.processOrder(
+        GuestPricing(),
+        "guest@gmail.com",
+        30000.0
     )
 }
